@@ -1,3 +1,5 @@
 feedparser
 pyyaml
 ssl
+threading
+time

@@ -1,11 +1,11 @@
 #! /usr/bin/env python3
-import feedparser,loader,ssl
+import feedparser,loader,ssl,threading,time
+
+
 
 #get the config data
 configData = loader.ImportConfig()
 
-#set interval
-interval = configData['config']['interval']
 #set feed url
 url = configData['config']['url']
 #ssl patch for feedparser
@@ -26,10 +26,15 @@ class Color:
 
 
 def StartClient():
-    rData = FeedCheck(url,interval)
+    print(chr(27) + "[2J")
+    rData = FeedCheck(url)
     for post in rData.entries:
         print(Color.BOLD + Color.GREEN + post.title + "\n"+ Color.RED + post.link + "\n")
+    Start()
 
-def FeedCheck(url,interval):
+def FeedCheck(url):
     feed = feedparser.parse(url)
     return feed
+
+def Start():
+    threading.Timer(10,StartClient).start()
