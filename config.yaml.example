@@ -1,2 +1,3 @@
 config:
     url: https://rss.dodad.com
+    interval: 360 #time in seconds

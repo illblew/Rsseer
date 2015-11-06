@@ -8,6 +8,10 @@ configData = loader.ImportConfig()
 
 #set feed url
 url = configData['config']['url']
+
+#interval get
+interval = configData['config']['interval']
+
 #ssl patch for feedparser
 if hasattr(ssl, '_create_unverified_context'):
     ssl._create_default_https_context = ssl._create_unverified_context
@@ -37,4 +41,4 @@ def FeedCheck(url):
     return feed
 
 def Start():
-    threading.Timer(10,StartClient).start()
+    threading.Timer(interval,StartClient).start()
