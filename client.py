@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-import feedparser,loader,ssl,threading,time
+import feedparser,loader,ssl,threading,time,htmler,os
 
 
 
@@ -30,10 +30,13 @@ class Color:
 
 
 def StartClient():
+    if os.path.isfile(htmler.filename):
+        os.remove(htmler.filename)
     print(chr(27) + "[2J")
     rData = FeedCheck(url)
     for post in rData.entries:
         print(Color.BOLD + Color.GREEN + post.title + "\n"+ Color.RED + post.link + "\n")
+        htmler.webWrite(post)
     Start()
 
 def FeedCheck(url):
@@ -41,4 +44,7 @@ def FeedCheck(url):
     return feed
 
 def Start():
+    time.sleep(5)
     threading.Timer(interval,StartClient).start()
+
+StartClient()

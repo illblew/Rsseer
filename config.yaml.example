@@ -1,3 +1,7 @@
 config:
-    url: https://rss.dodad.com
+    url: https://news.ycombinator.com/rss
     interval: 360 #time in seconds
+
+webconfig:
+    file: index.html
+    webserver: True #this turns on the webserver function
