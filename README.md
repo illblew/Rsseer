@@ -1,2 +1,3 @@
 # Rsseer
-Console Based RSS notifications.
+East console and web Based RSS viewer.
+![alt tag](http://i.imgur.com/EmGINBr.png)
