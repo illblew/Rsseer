@@ -5,3 +5,5 @@ config:
 webconfig:
     file: index.html
     webserver: True #this turns on the webserver function
+    title: Rsseer
+    inject: True #yes?
